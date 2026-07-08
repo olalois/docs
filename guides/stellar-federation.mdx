@@ -307,7 +307,7 @@ Federation resolution makes two HTTP requests (stellar.toml + federation GET) fo
 
 `resolveStellarFederation()` accepts a `cache` option conforming to a simple interface:
 
-```typescript
+```tsx
 interface FederationCache {
   get(key: string): Promise<FederationRecord | undefined>;
   set(key: string, record: FederationRecord, ttlMs: number): Promise<void>;

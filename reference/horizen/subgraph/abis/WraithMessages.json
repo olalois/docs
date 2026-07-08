@@ -1,0 +1,60 @@
+[
+  {
+    "inputs": [],
+    "name": "EmptyMessage",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidEphemeralKey",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "recipientHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "ephemeralPubKey",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "ciphertext",
+        "type": "bytes"
+      }
+    ],
+    "name": "Message",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "recipientMetaAddressHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes",
+        "name": "ephemeralPubKey",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bytes",
+        "name": "ciphertext",
+        "type": "bytes"
+      }
+    ],
+    "name": "sendMessage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

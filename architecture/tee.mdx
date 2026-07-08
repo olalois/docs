@@ -27,7 +27,7 @@ The path includes the chain identifier to prevent key collision. The same agent 
 
 ### Implementation
 
-```typescript
+```tsx
 class TeeService {
   async deriveAgentPrivateKey(agentId: string, chain: string): Promise<Uint8Array> {
     // DStack derives key from hardware root secret + path

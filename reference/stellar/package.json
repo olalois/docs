@@ -1,0 +1,15 @@
+{
+  "name": "wraith",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter @wraith/web dev",
+    "dev:client": "pnpm --filter @wraith/client dev",
+    "dev:server": "pnpm --filter @wraith/server dev",
+    "build:sdk": "pnpm --filter @wraith/sdk build",
+    "build:web": "pnpm --filter @wraith/web build",
+    "build": "pnpm --filter @wraith/sdk build && pnpm --filter @wraith/web build",
+    "test": "pnpm --filter @wraith/sdk test",
+    "clean": "pnpm -r run clean"
+  }
+}

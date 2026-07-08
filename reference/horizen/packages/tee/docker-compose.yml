@@ -1,0 +1,36 @@
+services:
+  app:
+    image: truthixify/wraith-tee:latest@sha256:512cf1cde950419095dfe1db4c55174d776239c4f7e34b12a0dc5cec53df3568
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/dstack.sock:/var/run/dstack.sock
+    environment:
+      - DATABASE_URL=postgresql://wraith:${POSTGRES_PASSWORD}@db:5432/wraith
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DEPLOYER_KEY=${DEPLOYER_KEY}
+      - CHAIN_ID=2651420
+      - RPC_URL=https://horizen-testnet.rpc.caldera.xyz/http
+      - PORT=3000
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=wraith
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=wraith
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wraith"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+volumes:
+  pgdata:

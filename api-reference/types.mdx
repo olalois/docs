@@ -367,7 +367,7 @@ When `accountId` starts with `st:xlm:` it is a Wraith stealth meta-address and s
 
 Pluggable cache interface accepted by `resolveStellarFederation()`. Implement this with any backend (in-memory, Redis, etc.).
 
-```typescript
+```tsx
 interface FederationCache {
   get(key: string): Promise<FederationRecord | undefined>;
   set(key: string, record: FederationRecord, ttlMs: number): Promise<void>;
@@ -407,7 +407,7 @@ Internal types used by the TEE server. Documented here for developers building c
 
 ### `ChainConnector`
 
-```typescript
+```tsx
 interface ChainConnector {
   readonly chain: string;
   readonly nativeAsset: string;

@@ -1,0 +1,34 @@
+services:
+  app:
+    image: truthixify/wraith-tee:latest@sha256:4d92528bd3cf3821d0bc8cd29f369747a0d73523d79965e4c3945be0c1562ace
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/dstack.sock:/var/run/dstack.sock
+    environment:
+      - DATABASE_URL=postgresql://wraith:${POSTGRES_PASSWORD}@db:5432/wraith
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - STELLAR_NETWORK=testnet
+      - PORT=3000
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=wraith
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=wraith
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wraith"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+volumes:
+  pgdata:

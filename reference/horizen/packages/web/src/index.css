@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0e0e0e;
+  color: #e7e5e4;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #c6c6c7;
+  color: #3f4041;
+}
+
+@layer components {
+  .brushed-metal {
+    background: linear-gradient(145deg, #c6c6c7 0%, #454747 100%);
+  }
+
+  .recessed-well {
+    background-color: #000000;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+input::placeholder {
+  color: #454747;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #454747;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

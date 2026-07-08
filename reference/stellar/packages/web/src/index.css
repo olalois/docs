@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: theme("colors.outline.variant");
+  }
+
+  html {
+    background-color: #0e0e0e;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0e0e0e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #444444;
+    border-radius: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #767575;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #444444 #0e0e0e;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(198, 198, 199, 0.2);
+    color: #e6e1e5;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(14, 14, 14, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(68, 68, 68, 0.5);
+  }
+
+  .glass-hover {
+    @apply glass transition-all duration-200;
+  }
+
+  .glass-hover:hover {
+    background: rgba(26, 26, 26, 0.8);
+    border-color: rgba(118, 117, 117, 0.5);
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(198, 198, 199, 0);
+    }
+    50% {
+      box-shadow: 0 0 16px 2px rgba(198, 198, 199, 0.1);
+    }
+  }
+
+  /* Shimmer loading */
+  .animate-shimmer {
+    animation: shimmer 1.5s ease-in-out infinite;
+    background: linear-gradient(
+      90deg,
+      rgba(26, 26, 26, 0) 0%,
+      rgba(68, 68, 68, 0.3) 50%,
+      rgba(26, 26, 26, 0) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Scan line effect */
+  .scanline::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(198, 198, 199, 0.015) 2px,
+      rgba(198, 198, 199, 0.015) 4px
+    );
+    pointer-events: none;
+  }
+}

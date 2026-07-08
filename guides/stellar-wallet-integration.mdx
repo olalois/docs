@@ -229,7 +229,7 @@ async function signWithLOBSTR(xdr: string): Promise<string> {
 
 ### Wallet descriptor type
 
-```typescript
+```tsx
 export type StellarWalletId = "freighter" | "albedo" | "xbull" | "lobstr";
 
 export interface StellarWallet {
@@ -465,7 +465,7 @@ const accounts = provider.accounts;
 
 ## Session Persistence
 
-```typescript
+```tsx
 const SESSION_KEY = "wraith:stellar:session";
 
 interface StellarSession {
@@ -507,7 +507,7 @@ async function restoreSession(): Promise<StellarSession | null> {
 
 ### React hook
 
-```typescript
+```tsx
 import { useEffect, useState } from "react";
 
 export function useWalletSession() {
