@@ -76,7 +76,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": ["introduction", "getting-started", "roadmap"]
+            "pages": ["introduction", "getting-started", "roadmap", "contributing"]
           },
           {
             "group": "Architecture",

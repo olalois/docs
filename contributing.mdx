@@ -1,0 +1,79 @@
+---
+title: "Contributing"
+description: "How to contribute to the Wraith Protocol documentation — branch model, conventional commits, snippet checks, and the review process."
+---
+
+The Wraith Protocol docs are open source and live at [github.com/wraith-protocol/docs](https://github.com/wraith-protocol/docs). Contributions of all kinds are welcome: fixing typos, improving code examples, adding guides, or expanding reference pages.
+
+The full contributing guide is in [CONTRIBUTING.md](https://github.com/wraith-protocol/docs/blob/develop/CONTRIBUTING.md) at the root of the repository. The sections below summarise the most important points.
+
+---
+
+## Branch model
+
+| Branch    | Purpose                               |
+| --------- | ------------------------------------- |
+| `develop` | Trunk — all work branches off here    |
+| `main`    | Release — merged from `develop` only  |
+
+Always branch from `develop`. PRs targeting `main` directly will be closed.
+
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b docs/my-improvement
+```
+
+---
+
+## Conventional commits
+
+Every commit and PR title must follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+
+```
+<type>(<scope>): <short summary>
+```
+
+Common types for this repo: `docs`, `fix`, `feat`, `refactor`, `chore`, `style`.
+
+```bash
+# Examples
+docs(stellar): add passkey signing guide
+fix(snippets): correct XLM transfer fee calculation
+feat(guides): add Soroswap integration walkthrough
+```
+
+---
+
+## Code snippet checks
+
+All TypeScript and JavaScript fences in `.mdx` files are compiled by `tsc --noEmit` in CI. Run the check locally before pushing:
+
+```bash
+pnpm run check:snippets
+```
+
+If a snippet is intentional pseudocode, annotate it with `no-check`:
+
+````mdx
+```typescript no-check
+// Illustrative — not meant to compile.
+```
+````
+
+Prefer making snippets compile over opting them out.
+
+---
+
+## Opening a pull request
+
+1. Target `develop`.
+2. Use the PR template that appears automatically on GitHub.
+3. Complete all checklist items relevant to your change.
+4. Keep PRs focused — one logical change per PR.
+
+A maintainer will review within 2 business days. Automated snippet and link checks must pass before human review begins.
+
+<Note>
+  See [CONTRIBUTING.md](https://github.com/wraith-protocol/docs/blob/develop/CONTRIBUTING.md) for the complete guide, including setup instructions and the full review process.
+</Note>
