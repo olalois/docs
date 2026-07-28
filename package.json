@@ -2,6 +2,7 @@
   "name": "@wraith-protocol/docs",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.0.0",
   "scripts": {
     "check:snippets": "tsx scripts/check-snippets.ts",
     "check:stellar-testnet": "tsx scripts/check-stellar-testnet-snippets.ts",

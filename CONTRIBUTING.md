@@ -251,9 +251,13 @@ PR from merging. If it fails, a maintainer will investigate separately.
 ## CI checks
 
 | Check | Blocking | Description |
-| ---------------------------------- | -------- | ------------------------------------------ |
+| ---------------------------------- | -------- | ------------------------------------------------------------------ |
 | Compile docs snippets | ✅ Yes | Runs `pnpm run check:snippets` on every PR |
-| Stellar snippet testnet validation | ❌ No | End-to-end validation against Stellar testnet |
+| PR title lint | ✅ Yes | Enforces conventional commit format on PR title |
+| PR target branch guard | ✅ Yes | Rejects PRs targeting `main` — retarget to `develop` |
+| Stellar snippet testnet validation | ❌ No | End-to-end validation against Stellar testnet (non-blocking) |
+
+The blocking checks must all pass before a PR can be merged. Check status is visible in the **Checks** tab of your PR.
 
 The blocking check must pass before a PR can be merged. You can see check
 status in the **Checks** tab of your PR.

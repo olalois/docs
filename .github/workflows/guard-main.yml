@@ -1,0 +1,25 @@
+name: PR target branch guard
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  block-direct-main-pr:
+    name: Block PRs targeting main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject PR targeting main
+        run: |
+          echo "::error::PRs must target 'develop', not 'main'."
+          echo ""
+          echo "  'main' is the release branch and is only updated by"
+          echo "  maintainers via controlled merges from 'develop'."
+          echo ""
+          echo "  Please retarget your PR to 'develop':"
+          echo "    1. Close this PR."
+          echo "    2. Open a new PR with base set to 'develop'."
+          echo ""
+          echo "  See CONTRIBUTING.md for the full branch model."
+          exit 1

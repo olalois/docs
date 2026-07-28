@@ -1,0 +1,42 @@
+name: PR title lint
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  lint-pr-title:
+    name: Validate conventional commit title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          # Pattern: <type>(<optional scope>): <description>
+          # Allowed types: feat fix docs chore refactor style
+          PATTERN='^(feat|fix|docs|chore|refactor|style)(\([a-z0-9/,. -]+\))?: .{1,100}$'
+
+          if echo "$PR_TITLE" | grep -qE "$PATTERN"; then
+            echo "PR title is valid: $PR_TITLE"
+          else
+            echo "::error::PR title does not follow Conventional Commits format."
+            echo ""
+            echo "  Got: $PR_TITLE"
+            echo ""
+            echo "  Expected format:  <type>(<scope>): <description>"
+            echo "  Allowed types:    feat | fix | docs | chore | refactor | style"
+            echo ""
+            echo "  Examples:"
+            echo "    feat(guides): add stellar multisig withdrawal guide"
+            echo "    fix(sdk): correct Chain enum example"
+            echo "    docs: expand CONTRIBUTING with branch model"
+            echo "    chore(ci): pin actions/checkout to v4"
+            echo ""
+            echo "  See CONTRIBUTING.md for the full commit message guide."
+            exit 1
+          fi
