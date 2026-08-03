@@ -154,6 +154,10 @@
               "guides/wraith-names-stellar",
               "guides/ops/self-hosted-deployment"
             ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["guides/integrations/nuxt"]
           }
         ]
       },
