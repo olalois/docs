@@ -1,0 +1,31 @@
+---
+title: "Migrating to Wraith v1"
+description: "How to update existing integrations and scripts to the Wraith Protocol v1 SDK and APIs."
+---
+
+This page summarizes the main changes when upgrading from earlier Wraith Protocol integrations to the v1 SDK.
+
+## What changed
+
+- The unified SDK entry points are now `Wraith` and `WraithAgent`.
+- Chain selection should use the `Chain` enum instead of raw string values.
+- Stealth payment flows now use the same agent client patterns across supported chains.
+
+## Migration checklist
+
+1. Update your package dependency to `@wraith-protocol/sdk`.
+2. Replace legacy chain strings with `Chain` values.
+3. Move any custom wallet or agent setup to the v1 client APIs.
+4. Re-run your snippet and integration checks after the update.
+
+## Example
+
+```typescript
+import { Chain, Wraith } from "@wraith-protocol/sdk";
+
+const client = new Wraith({
+  chain: Chain.Stellar,
+});
+```
+
+Use the same client pattern for new integrations and gradually replace older flow-specific code paths.

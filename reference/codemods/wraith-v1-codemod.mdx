@@ -1,0 +1,22 @@
+---
+title: "Wraith v1 codemod"
+description: "Reference for the codemod that updates older Wraith integrations to the v1 SDK patterns."
+---
+
+Use this codemod to update older Wraith Protocol integrations to the current v1 conventions.
+
+## What it updates
+
+- Replaces legacy import paths with the unified SDK entry points.
+- Converts raw chain string literals to `Chain` enum values.
+- Updates agent initialization code to the current client constructor style.
+
+## Usage
+
+```bash
+npx @wraith-protocol/sdk codemod wraith-v1
+```
+
+## Notes
+
+Run the codemod in a clean working tree and review the generated diffs before committing them.
