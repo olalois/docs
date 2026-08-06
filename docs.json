@@ -94,12 +94,7 @@
           },
           {
             "group": "Reference",
-            "pages": [
-              "reference/stellar-networks",
-              "reference/stellar-event-schemas",
-              "reference/threat-model",
-              "reference/security-disclosure"
-            ]
+            "pages": ["reference/security-disclosure", "reference/threat-model", "reference/audits"]
           }
         ]
       },
