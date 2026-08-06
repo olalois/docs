@@ -193,9 +193,15 @@ refactor(architecture): reorganise TEE section headings
    - **Title:** Follow the conventional commits format (e.g.,
      `feat(guides): add stellar multisig withdrawal guide`)
 
-3. Fill in the PR template completely. Incomplete templates slow down review.
+3. Fill in the PR template completely. The repository template lives at
+   [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) and
+   includes a conventional-commit checklist plus a snippet-check reminder for
+   MDX changes. Incomplete templates slow down review.
 
-4. A maintainer will review within a few business days. Address feedback with
+4. If your PR changes `.mdx` files, run `pnpm run check:snippets` before you
+   push. This is required for documentation PRs that include code fences.
+
+5. A maintainer will review within a few business days. Address feedback with
    new commits — do not force-push after a review has started.
 
 ### Common PR mistakes to avoid

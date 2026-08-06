@@ -20,13 +20,20 @@ Closes #
 
 ---
 
+## Conventional commit checklist
+
+- [ ] My PR title starts with a conventional-commit type such as `feat`, `fix`, `docs`, `chore`, `refactor`, or `style`
+- [ ] The title is short, lowercase, and follows the format `type(scope): summary`
+- [ ] My commit messages follow the same convention where applicable
+
+---
+
 ## Branch checklist
 
 > Common mistakes that cause PRs to be redirected. Please verify before opening.
 
 - [ ] I branched from `develop`, not `main`
 - [ ] This PR targets `develop`, not `main`
-- [ ] My PR title follows conventional commits format (e.g., `feat(guides): add stellar multisig guide`)
 
 ---
 
